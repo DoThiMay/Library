@@ -43,5 +43,6 @@
           </c:forEach>
     </table>
      <a href="users/getAllUser"> Show Users </a>
+     <a href="librarycard/getAllLibrarycard"> Show Librarycards </a>
 </body>
 </html>
