@@ -37,5 +37,7 @@
               </tr>
           </c:forEach>
     </table>
+    <a href="/users/insertUser">Insert new user</a>
+    <a href="../../library"> Return </a>
 </body>
 </html>
