@@ -23,4 +23,27 @@ public class UserController {
         modelMap.addAttribute("user", user);
         return "User"; //"productList.jsp"
     }
+@RequestMapping(value = "/insertUser", method = RequestMethod.GET)
+	public String insertUser(ModelMap modelMap) {
+		modelMap.addAttribute("user", new User());
+		return "insertUser";
+
+	}
+	@RequestMapping(value = "/insertUser", method = RequestMethod.POST)
+	public String insertUser(ModelMap modelMap, @Validated @ModelAttribute("user") User user,
+			BindingResult BindingResult // validation
+	) {
+		if (BindingResult.hasErrors()) {
+			return "insertUser";
+		}try {
+			String uuid = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+			String userIdRandom = uuid.substring(uuid.length() - 4);
+			user.setUserID(userIdRandom);
+			userRespository.save(user);
+			return "redirect:/users/getAllUser";
+		} catch (Exception e) {
+			modelMap.addAttribute("error", e.toString());
+			return "insertUser";
+		}
+	}
 }
