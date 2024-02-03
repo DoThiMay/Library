@@ -14,7 +14,9 @@ public class Librarycard {
     @Column(name = "cardID")
 	private String cardID;
 	private String userID;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date borrowedday;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date payday;
 	public Librarycard() {}
 	public Librarycard(String cardID, String userID, Date borrowedday, Date payday) {
